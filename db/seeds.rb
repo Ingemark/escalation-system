@@ -8,4 +8,5 @@
 #
 
   #default admin
-  User.create(username: 'admin', email: 'admin@admin.com', password: 'adminadmin')
+  User.create(username: 'admin', email: 'admin@admin.com', password:
+              'adminadmin', password_confirmation: 'adminadmin')
