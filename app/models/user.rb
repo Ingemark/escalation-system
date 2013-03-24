@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     :remember_me
 
   validates :username, presence: true
+  validates :username, uniqueness: true
   validates :password_confirmation, presence: true
 
   rails_admin do
