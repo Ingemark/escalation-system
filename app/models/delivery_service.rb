@@ -5,4 +5,5 @@ class DeliveryService < ActiveRecord::Base
   validates :name, uniqueness: true
 
   has_many :delivery_service_properties, dependent: :destroy
+  has_many :delivery_addresses, dependent: :destroy
 end
