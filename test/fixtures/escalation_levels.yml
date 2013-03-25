@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  context_id: 1
+  level: 1
+  when: 1
+  sequential_notification: false
+
+two:
+  name: MyString
+  context_id: 1
+  level: 1
+  when: 1
+  sequential_notification: false
