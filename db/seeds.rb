@@ -10,3 +10,14 @@
   #default admin
   User.create(username: 'admin', email: 'admin@admin.com', password:
               'adminadmin', password_confirmation: 'adminadmin')
+
+  Consumer.create(name: 'hrvoje')
+
+  mail = DeliveryService.create(name: 'mail')
+  phone = DeliveryService.create(name: 'phone')
+
+  DeliveryServiceProperty.create(key: 'smtp',
+                                 value: 'smtp.t-com.hr',
+                                 delivery_service_id: mail.id)
+
+	
