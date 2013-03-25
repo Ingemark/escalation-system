@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325110008) do
+ActiveRecord::Schema.define(:version => 20130325123717) do
 
   create_table "consumers", :force => true do |t|
     t.string   "name"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(:version => 20130325110008) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "escalation_levels", :force => true do |t|
+    t.string   "name"
+    t.integer  "context_id"
+    t.integer  "level"
+    t.integer  "when"
+    t.boolean  "sequential_notification"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|
