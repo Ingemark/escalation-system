@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  escalation_level_id: 1
+  delivery_address_id: 1
+  consumer_sequence: 1
+
+two:
+  name: MyString
+  escalation_level_id: 1
+  delivery_address_id: 1
+  consumer_sequence: 1

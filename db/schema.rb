@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325123717) do
+ActiveRecord::Schema.define(:version => 20130325193027) do
 
   create_table "consumers", :force => true do |t|
     t.string   "name"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(:version => 20130325123717) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "subscriptions", :force => true do |t|
+    t.string   "name"
+    t.integer  "escalation_level_id"
+    t.integer  "delivery_address_id"
+    t.integer  "consumer_sequence"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

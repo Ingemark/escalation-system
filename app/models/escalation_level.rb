@@ -6,4 +6,5 @@ class EscalationLevel < ActiveRecord::Base
   validates :level, uniqueness: {:scope => :context_id}
 
   belongs_to :context
+  has_many :subscriptions
 end

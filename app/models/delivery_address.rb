@@ -7,4 +7,6 @@ class DeliveryAddress < ActiveRecord::Base
   belongs_to :delivery_service
   belongs_to :consumer
 
+  has_many :subscriptions
+
 end
