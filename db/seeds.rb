@@ -11,7 +11,7 @@
   User.create(username: 'admin', email: 'admin@admin.com', password:
               'adminadmin', password_confirmation: 'adminadmin')
 
-  Consumer.create(name: 'hrvoje')
+  hrvoje = Consumer.create(name: 'hrvoje')
 
   mail = DeliveryService.create(name: 'mail')
   phone = DeliveryService.create(name: 'phone')
@@ -20,4 +20,11 @@
                                  value: 'smtp.t-com.hr',
                                  delivery_service_id: mail.id)
 
-	
+  DeliveryAddress.create(name: 'telefon doma',
+                         address: '013869246',
+                         delivery_service_id: phone.id,
+                         consumer_id: hrvoje.id)
+  DeliveryAddress.create(name: 'mail poslovni',
+                         address: 'hrvoje@posao.com',
+                         delivery_service_id: phone.id,
+                         consumer_id: hrvoje.id)
