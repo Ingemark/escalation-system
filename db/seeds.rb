@@ -26,5 +26,5 @@
                          consumer_id: hrvoje.id)
   DeliveryAddress.create(name: 'mail poslovni',
                          address: 'hrvoje@posao.com',
-                         delivery_service_id: phone.id,
+                         delivery_service_id: mail.id,
                          consumer_id: hrvoje.id)
