@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325193027) do
+ActiveRecord::Schema.define(:version => 20130326103528) do
 
   create_table "consumers", :force => true do |t|
     t.string   "name"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(:version => 20130325193027) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "scheduled_escalations", :force => true do |t|
+    t.integer  "subscription_id"
+    t.datetime "duedate"
+    t.string   "external_reference_id"
+    t.string   "status"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "subscriptions", :force => true do |t|
     t.string   "name"

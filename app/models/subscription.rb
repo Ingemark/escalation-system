@@ -8,4 +8,5 @@ class Subscription < ActiveRecord::Base
 
   belongs_to :escalation_level
   belongs_to :delivery_address
+  has_many :scheduled_escalations
 end
