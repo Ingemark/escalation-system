@@ -5,6 +5,8 @@ EscalationSystem::Application.routes.draw do
 
   root :to => 'rails_admin::Main#dashboard'
 
+  post 'escalation' => 'escalation#create'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
