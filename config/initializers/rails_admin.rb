@@ -50,6 +50,40 @@ RailsAdmin.config do |config|
   # Now you probably need to tour the wiki a bit: https://github.com/sferik/rails_admin/wiki
   # Anyway, here is how RailsAdmin saw your application's models when you ran the initializer:
 
+  config.model 'DeliveryAddress' do
+    navigation_label 'Delivery'
+  end 
 
+  config.model 'DeliveryServiceProperty' do
+    navigation_label 'Delivery'
+  end 
+
+  config.model 'DeliveryService' do
+    navigation_label 'Delivery'
+  end 
+
+  config.model 'Consumer' do
+    navigation_label 'Delivery'
+  end 
+
+  config.model 'Context' do
+    navigation_label 'Context'
+  end 
+
+  config.model 'EscalationLevel' do
+    navigation_label 'Context'
+  end 
+
+  config.model 'Subscription' do
+    navigation_label 'Escalations'
+  end 
+
+  config.model 'ScheduledEscalation' do
+    navigation_label 'Escalations'
+  end 
+
+  config.model 'User' do
+    navigation_label 'Users'
+  end 
 
 end
