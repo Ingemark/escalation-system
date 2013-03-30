@@ -6,6 +6,7 @@ EscalationSystem::Application.routes.draw do
   root :to => 'rails_admin::Main#dashboard'
 
   post 'escalation' => 'escalation#create'
+  delete 'escalation' => 'escalation#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
