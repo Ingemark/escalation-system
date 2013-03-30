@@ -81,9 +81,4 @@ RailsAdmin.config do |config|
   config.model 'ScheduledEscalation' do
     navigation_label 'Escalations'
   end 
-
-  config.model 'User' do
-    navigation_label 'Users'
-  end 
-
 end

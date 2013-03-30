@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   rails_admin do
+    navigation_label 'User'
+
     list do
       field :id
       field :username
