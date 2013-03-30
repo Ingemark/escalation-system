@@ -7,12 +7,18 @@ class EscalationController < ApplicationController
     escal_count = 0
     EscalationLevel.where(context_id: context_id).each do |level|
       Subscription.where(escalation_level_id: level.id).each do |sub|
-        duedate = DateTime.now + level.when.minutes
-        if ScheduledEscalation.create(subscription_id: sub.id,
-                                      duedate: duedate,
-                                      external_reference_id: external_reference_id,
-                                      status: 'scheduled')
-          escal_count += 1
+        #check if there exists scheduled escalation with same context_id &
+        #external_id
+        unless ScheduledEscalation.where(subscription_id: sub.id).
+          where(external_reference_id: external_reference_id).
+          where(status: 'scheduled').exists?
+          duedate = DateTime.now + level.when.minutes
+          if ScheduledEscalation.create(subscription_id: sub.id,
+                                        duedate: duedate,
+                                        external_reference_id: external_reference_id,
+                                        status: 'scheduled')
+            escal_count += 1
+          end
         end
       end
     end
