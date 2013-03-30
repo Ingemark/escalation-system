@@ -1,7 +1,9 @@
 cancan
+read_only Escalations model
 token
 db image link
 rolify
 indexes
+controller tests
 
 root page?

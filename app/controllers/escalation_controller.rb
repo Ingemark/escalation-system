@@ -1,8 +1,23 @@
 class EscalationController < ApplicationController
+  respond_to :json
+
   # POST /escalation
   def create
     external_reference_id = params[:escalation][:external_reference_id]
     context_id = params[:escalation][:context_id]
+
+    if external_reference_id.nil? or context_id.nil?
+      render :json => { :status => :error,
+                        :message => 'Request must contain external_reference_id'\
+                          ' and context_id'}
+      return
+    end
+
+    unless Context.exists?(context_id)
+      render :json => { :status => :error,
+                        :message => "Context_id is not valid"}
+      return
+    end
 
     escal_count = 0
     EscalationLevel.where(context_id: context_id).each do |level|
@@ -23,8 +38,13 @@ class EscalationController < ApplicationController
       end
     end
 
-    respond_to do |format|
-      format.json { render :json => {'escalations created' => escal_count} }
+    if escal_count == 0
+      render :json => { :status => :error,
+                        :message => 'Escalations with same context_id and'\
+                          ' external_reference_id already exist.'}
+    else
+      render :json => { :status => :ok,
+                        :message => "#{escal_count} escalations created" }
     end
   end
 
@@ -32,6 +52,19 @@ class EscalationController < ApplicationController
   def destroy
     external_reference_id = params[:escalation][:external_reference_id]
     context_id = params[:escalation][:context_id]
+
+    if external_reference_id.nil? or context_id.nil?
+      render :json => { :status => :error,
+                        :message => 'Request must contain external_reference_id'\
+                          ' and context_id'}
+      return
+    end
+
+    unless Context.exists?(context_id)
+      render :json => { :status => :error,
+                        :message => "Context_id is not valid"}
+      return
+    end
     
     escal_count = 0
     EscalationLevel.where(context_id: context_id).each do |level|
@@ -45,8 +78,13 @@ class EscalationController < ApplicationController
       end
     end
 
-    respond_to do |format|
-      format.json { render :json => { 'escalations canceled' => escal_count} }
+    if escal_count == 0
+      render :json => { :status => :error,
+                        :message => 'Escalations with same context_id and'\
+                          ' external_reference_id are already canceled.'}
+    else
+      render :json => { :status => :ok,
+                        :message => "#{escal_count} escalations canceled" }
     end
   end
 end
