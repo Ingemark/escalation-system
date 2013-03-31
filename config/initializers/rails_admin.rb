@@ -81,4 +81,8 @@ RailsAdmin.config do |config|
   config.model 'ScheduledEscalation' do
     navigation_label 'Escalations'
   end 
+
+  config.navigation_static_links = {
+    'ER model' => ('/es.png')
+  }
 end
