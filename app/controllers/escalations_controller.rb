@@ -10,13 +10,13 @@ class EscalationsController < ApplicationController
     if external_id.nil? or context_id.nil?
       render :json => { :status => :error,
                         :message => 'Request must contain external_reference_id'\
-                          ' and context_id'}
+                          ' and context_id.'}
       return
     end
 
     unless Context.exists?(context_id)
       render :json => { :status => :error,
-                        :message => "Context_id is not valid"}
+                        :message => "Context_id is not valid."}
       return
     end
 
@@ -42,10 +42,10 @@ class EscalationsController < ApplicationController
     if escal_count == 0
       render :json => { :status => :error,
                         :message => 'Escalations with same context_id and'\
-                          ' external_reference_id already exist.'}
+                          ' external_reference_id are already scheduled.'}
     else
       render :json => { :status => :ok,
-                        :message => "#{escal_count} escalations created" }
+                        :message => "#{escal_count} escalations created." }
     end
   end
 
@@ -57,20 +57,20 @@ class EscalationsController < ApplicationController
     if external_id.nil? or context_id.nil?
       render :json => { :status => :error,
                         :message => 'Request must contain external_reference_id'\
-                          ' and context_id'}
+                          ' and context_id.'}
       return
     end
 
     unless Context.exists?(context_id)
       render :json => { :status => :error,
-                        :message => "Context_id is not valid"}
+                        :message => "Context_id is not valid."}
       return
     end
 
     unless ScheduledEscalation.where(external_reference_id: external_id).exists?
       render :json => { :status => :error,
                         :message => "Escalations with that external_reference_id"\
-                          " don't exist" }
+                          " don't exist." }
       return
     end
     
@@ -92,7 +92,7 @@ class EscalationsController < ApplicationController
                           ' external_reference_id are already canceled.'}
     else
       render :json => { :status => :ok,
-                        :message => "#{escal_count} escalations canceled" }
+                        :message => "#{escal_count} escalations canceled." }
     end
   end
 end

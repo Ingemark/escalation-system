@@ -9,7 +9,7 @@ class TokensController < ApplicationController
 
     if username.nil? or password.nil?
       render :json => { :status => :error,
-                        :message => 'Request must contatin username and password'}
+                        :message => 'Request must contain username and password.'}
       return
     end
 
@@ -17,7 +17,7 @@ class TokensController < ApplicationController
 
     if user.nil?
       render :json => { :status => :error,
-                        :message => 'Invalid username'}
+                        :message => 'Invalid username.'}
       return
     end
 
@@ -28,7 +28,7 @@ class TokensController < ApplicationController
                         :message => user.authentication_token}
     else
       render :json => { :status => :error,
-                        :message => 'Invalid password'}
+                        :message => 'Invalid password.'}
     end
   end
 
@@ -36,11 +36,11 @@ class TokensController < ApplicationController
     user = User.find_by_authentication_token(params[:auth_token])
     if user.nil?
       render :json => { :status => :error,
-                        :message => 'Token not found'}
+                        :message => 'Token not found.'}
     else
       user.reset_authentication_token!
       render :json => { :status => :ok,
-                        :message => 'Token destroyed'}
+                        :message => 'Token destroyed.'}
     end
   end
 end

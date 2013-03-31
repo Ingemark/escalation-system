@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  context_id: 1
+prvi:
+  name: prvi inge-mark
+  context: inge_mark
   level: 1
-  when: 1
+  when: 10
   sequential_notification: false
 
-two:
-  name: MyString
-  context_id: 1
-  level: 1
-  when: 1
+drugi:
+  name: drugi inge-mark
+  context: inge_mark
+  level: 2
+  when: 60
   sequential_notification: false

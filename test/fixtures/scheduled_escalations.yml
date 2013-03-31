@@ -1,13 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  subscription_id: 1
-  duedate: 2013-03-26 11:35:28
-  external_reference_id: MyString
-  status: MyString
+one: {}
 
-two:
-  subscription_id: 1
-  duedate: 2013-03-26 11:35:28
-  external_reference_id: MyString
-  status: MyString
+two: {}

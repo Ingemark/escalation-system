@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  escalation_level_id: 1
-  delivery_address_id: 1
+viktor:
+  name: viktor
+  escalation_level: drugi
+  delivery_address: viktor_mail
+  consumer_sequence: 2
+
+josip:
+  name: josip
+  escalation_level: drugi
+  delivery_address: josip_mail
   consumer_sequence: 1
 
-two:
-  name: MyString
-  escalation_level_id: 1
-  delivery_address_id: 1
+alen:
+  name: alen
+  escalation_level: prvi
+  delivery_address: alen_mail
   consumer_sequence: 1

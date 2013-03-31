@@ -2,10 +2,10 @@ cancan
 rolify
 read_only Escalations model
 
-session timeout
-
 indexes
 
-controller tests
+unit tests
+route tests
+integration tests
 
 root page?

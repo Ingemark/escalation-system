@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  address: MyString
-  delivery_service_id: 1
-  consumer_id: 1
+viktor_mail:
+  name: viktor mail
+  address: viktor@inge-mark.hr
+  delivery_service: mail
+  consumer_id: viktor
 
-two:
-  name: MyString
-  address: MyString
-  delivery_service_id: 1
-  consumer_id: 1
+alen_mail:
+  name: alen mail
+  address: alen@inge-mark.hr
+  delivery_service: mail
+  consumer_id: alen
+
+josip_mail:
+  name: josip mail
+  address: josip@inge-mark.hr
+  delivery_service: mail
+  consumer_id: josip
