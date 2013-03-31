@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331123251) do
+ActiveRecord::Schema.define(:version => 20130331212039) do
 
   create_table "consumers", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,9 @@ ActiveRecord::Schema.define(:version => 20130331123251) do
     t.datetime "updated_at",          :null => false
   end
 
+  add_index "delivery_addresses", ["consumer_id"], :name => "index_delivery_addresses_on_consumer_id"
+  add_index "delivery_addresses", ["delivery_service_id"], :name => "index_delivery_addresses_on_delivery_service_id"
+
   create_table "delivery_service_properties", :force => true do |t|
     t.string   "key"
     t.string   "value"
@@ -41,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20130331123251) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
+
+  add_index "delivery_service_properties", ["delivery_service_id"], :name => "index_delivery_service_properties_on_delivery_service_id"
 
   create_table "delivery_services", :force => true do |t|
     t.string   "name"
@@ -57,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20130331123251) do
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
+
+  add_index "escalation_levels", ["context_id"], :name => "index_escalation_levels_on_context_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -80,6 +87,8 @@ ActiveRecord::Schema.define(:version => 20130331123251) do
     t.datetime "updated_at",            :null => false
   end
 
+  add_index "scheduled_escalations", ["subscription_id"], :name => "index_scheduled_escalations_on_subscription_id"
+
   create_table "subscriptions", :force => true do |t|
     t.string   "name"
     t.integer  "escalation_level_id"
@@ -88,6 +97,9 @@ ActiveRecord::Schema.define(:version => 20130331123251) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
+
+  add_index "subscriptions", ["delivery_address_id"], :name => "index_subscriptions_on_delivery_address_id"
+  add_index "subscriptions", ["escalation_level_id"], :name => "index_subscriptions_on_escalation_level_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

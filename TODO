@@ -2,8 +2,6 @@ cancan
 rolify
 read_only Escalations model
 
-indexes
-
 unit tests
 route tests
 integration tests
