@@ -8,6 +8,9 @@ EscalationSystem::Application.routes.draw do
   post 'escalation' => 'escalation#create'
   delete 'escalation' => 'escalation#destroy'
 
+  post 'tokens' => 'tokens#create'
+  delete 'tokens' => 'tokens#destroy'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

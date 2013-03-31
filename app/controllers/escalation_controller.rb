@@ -1,4 +1,5 @@
 class EscalationController < ApplicationController
+  before_filter :authenticate_user!
   respond_to :json
 
   # POST /escalation

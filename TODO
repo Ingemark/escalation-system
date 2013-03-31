@@ -1,7 +1,6 @@
 cancan
 read_only Escalations model
-token
-db image link
+session timeout
 rolify
 indexes
 controller tests
