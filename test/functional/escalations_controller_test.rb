@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EscalationControllerTest < ActionController::TestCase
+class EscalationsControllerTest < ActionController::TestCase
   test "should get create" do
     get :create
     assert_response :success

@@ -5,8 +5,8 @@ EscalationSystem::Application.routes.draw do
 
   root :to => 'rails_admin::Main#dashboard'
 
-  post 'escalation' => 'escalation#create'
-  delete 'escalation' => 'escalation#destroy'
+  post 'escalations' => 'escalations#create'
+  delete 'escalations' => 'escalations#destroy'
 
   post 'tokens' => 'tokens#create'
   delete 'tokens' => 'tokens#destroy'

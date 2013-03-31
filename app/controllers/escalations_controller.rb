@@ -1,11 +1,11 @@
-class EscalationController < ApplicationController
+class EscalationsController < ApplicationController
   before_filter :authenticate_user!
   respond_to :json
 
-  # POST /escalation
+  # POST /escalations
   def create
-    external_id = params[:escalation][:external_reference_id]
-    context_id = params[:escalation][:context_id]
+    external_id = params[:external_reference_id]
+    context_id = params[:context_id]
 
     if external_id.nil? or context_id.nil?
       render :json => { :status => :error,
@@ -49,10 +49,10 @@ class EscalationController < ApplicationController
     end
   end
 
-  # DELETE /escalation
+  # DELETE /escalations
   def destroy
-    external_id = params[:escalation][:external_reference_id]
-    context_id = params[:escalation][:context_id]
+    external_id = params[:external_reference_id]
+    context_id = params[:context_id]
 
     if external_id.nil? or context_id.nil?
       render :json => { :status => :error,

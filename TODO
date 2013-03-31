@@ -1,8 +1,11 @@
 cancan
-read_only Escalations model
-session timeout
 rolify
+read_only Escalations model
+
+session timeout
+
 indexes
+
 controller tests
 
 root page?
