@@ -10,14 +10,14 @@ class DeliveryServicePropertyTest < ActiveSupport::TestCase
   end
 
   test "key must be unique" do
-    delivery_service = DeliveryService.create(name: "phone")
+    delivery_service = delivery_services(:phone)
     delivery_service_property1 = DeliveryServiceProperty.create(
                                    key: "smtp",
                                    value: "smtp.com",
                                    delivery_service_id: delivery_service.id)
     assert delivery_service_property1.valid?
 
-    delivery_service_property2 = DeliveryServiceProperty.create(
+    delivery_service_property2 = DeliveryServiceProperty.new(
                                    key: "smtp",
                                    value: "smtp.com",
                                    delivery_service_id: delivery_service.id)

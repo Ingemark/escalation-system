@@ -20,6 +20,13 @@ class EscalationsController < ApplicationController
       return
     end
 
+    unless current_user.has_role? :user, Context.find(context_id)
+      render :json => { :status => :error,
+                        :message => 'Current user doesnt have access to this'\
+                          ' context.'}
+      return
+    end
+
     escal_count = 0
     EscalationLevel.where(context_id: context_id).each do |level|
       Subscription.where(escalation_level_id: level.id).each do |sub|
@@ -64,6 +71,13 @@ class EscalationsController < ApplicationController
     unless Context.exists?(context_id)
       render :json => { :status => :error,
                         :message => "Context_id is not valid."}
+      return
+    end
+
+    unless current_user.has_role? :user, Context.find(context_id)
+      render :json => { :status => :error,
+                        :message => 'Current user doesnt have access to this'\
+                          ' context.'}
       return
     end
 

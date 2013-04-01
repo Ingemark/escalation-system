@@ -7,6 +7,7 @@ class EscalationsControllerTest < ActionController::TestCase
               'ACCEPT' => 'application/json' }
   def setup
     sign_in users(:admin)
+    users(:admin).add_role :user, Context
   end
 
   test 'create must provide external_reference_id and context_id' do
@@ -24,6 +25,18 @@ class EscalationsControllerTest < ActionController::TestCase
 
     assert_equal 'error', body["status"]
     assert_equal 'Context_id is not valid.', body["message"]
+  end
+
+  test 'create current user cant access' do
+    sign_out users(:admin)
+    sign_in users(:trexmark)
+    params = {context_id: contexts(:inge_mark).id, external_reference_id: "1"}
+    post :create, params, @headers
+    body = JSON.parse(@response.body)
+
+    assert_equal 'error', body["status"]
+    assert_equal 'Current user doesnt have access to this context.',
+      body["message"]
   end
 
   test 'create escalations created' do
@@ -61,6 +74,18 @@ class EscalationsControllerTest < ActionController::TestCase
 
     assert_equal 'error', body["status"]
     assert_equal 'Context_id is not valid.', body["message"]
+  end
+
+  test 'destroy current user cant access' do
+    sign_out users(:admin)
+    sign_in users(:trexmark)
+    params = {context_id: contexts(:inge_mark).id, external_reference_id: "1"}
+    post :destroy, params, @headers
+    body = JSON.parse(@response.body)
+
+    assert_equal 'error', body["status"]
+    assert_equal 'Current user doesnt have access to this context.',
+      body["message"]
   end
 
   test 'destroy external_reference_id invalid' do

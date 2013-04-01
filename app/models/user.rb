@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   devise :database_authenticatable, :rememberable, :trackable, :validatable,
     :token_authenticatable
 
@@ -11,6 +12,10 @@ class User < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'User'
+
+    object_label_method do
+      :custom_name_method
+    end
 
     list do
       field :id
@@ -32,5 +37,9 @@ class User < ActiveRecord::Base
       field :password
       field :password_confirmation
     end
+  end
+
+  def custom_name_method
+    self.username
   end
 end

@@ -1,6 +1,4 @@
-cancan
-rolify
-read_only Escalations model
+subscriptions sequence unique
 
 unit tests
 route tests
