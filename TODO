@@ -1,5 +1,4 @@
 sign_in redirect
-admin roles
 rm devise layouts
 
 unit tests

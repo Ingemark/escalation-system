@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(:version => 20130401134244) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
-  create_table "users_roles", :id => false, :force => true do |t|
+  create_table "users_roles", :id => true, :force => true do |t|
     t.integer "user_id"
     t.integer "role_id"
   end
