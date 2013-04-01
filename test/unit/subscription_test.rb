@@ -18,4 +18,19 @@ class SubscriptionTest < ActiveSupport::TestCase
     assert subscription.invalid?
     assert subscription.errors[:consumer_sequence].any?
   end
+
+  test "escalation_level and consumer_sequence must be unique" do
+    subscription1 = Subscription.create(name: "test",
+                                        escalation_level_id: 1,
+                                        delivery_address_id: 1,
+                                        consumer_sequence: 1)
+    assert subscription1.valid?
+    
+    subscription2 = Subscription.create(name: "test",
+                                        escalation_level_id: 1,
+                                        delivery_address_id: 1,
+                                        consumer_sequence: 1)
+    assert subscription2.invalid?
+    assert subscription2.errors[:consumer_sequence].any?
+  end
 end

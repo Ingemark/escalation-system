@@ -77,11 +77,11 @@ RailsAdmin.config do |config|
   end 
 
   config.model 'Subscription' do
-    navigation_label 'Escalations'
+    navigation_label 'Escalation'
   end 
 
   config.model 'ScheduledEscalation' do
-    navigation_label 'Escalations'
+    navigation_label 'Escalation'
   end 
 
   config.model 'Role' do

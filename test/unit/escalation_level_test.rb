@@ -11,7 +11,7 @@ class EscalationLevelTest < ActiveSupport::TestCase
   end
 
   test "context & level must be unique" do
-    context = Context.create(name: "konzum system admin")
+    context = Context.create(name: "test context")
     escalation_level1 = EscalationLevel.create(name: "test",
                                               context_id: context.id,
                                               level: 1,

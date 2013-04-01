@@ -1,7 +1,6 @@
 sign_in redirect
 admin roles
 rm devise layouts
-subscriptions sequence unique
 
 unit tests
 route tests

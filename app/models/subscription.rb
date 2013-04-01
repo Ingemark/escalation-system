@@ -5,6 +5,7 @@ class Subscription < ActiveRecord::Base
   validates :consumer_sequence, :delivery_address_id, :escalation_level_id,
     :name, presence: true
   validates :consumer_sequence, numericality: {greater_than_or_equal_to: 1}
+  validates :consumer_sequence, uniqueness: {:scope => :escalation_level_id}
 
   belongs_to :escalation_level
   belongs_to :delivery_address
