@@ -84,6 +84,10 @@ RailsAdmin.config do |config|
     navigation_label 'Escalations'
   end 
 
+  config.model 'Role' do
+    navigation_label 'User'
+  end 
+
   config.navigation_static_links = {
     'ER model' => ('/es.png')
   }
