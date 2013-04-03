@@ -51,5 +51,5 @@ DELETE /escalations
 
 JSON response:
 ```JSON
-{"status": "OK", "message": "3 escalations created."}
+{"status": "OK", "message": "3 escalations deleted."}
 ```
