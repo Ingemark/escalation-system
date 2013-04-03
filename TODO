@@ -1,8 +1,6 @@
 sign_in redirect
 rm devise layouts
-EscalationsController no subscriptions condition?
-EscalationsController wrong login
-check url vs json parameters?
+EscalationsController no subscriptions condition
 
 unit tests
 route tests

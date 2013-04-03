@@ -28,13 +28,16 @@ class EscalationsController < ApplicationController
     end
 
     escal_count = 0
+    escals_created = true
     EscalationLevel.where(context_id: context_id).each do |level|
       Subscription.where(escalation_level_id: level.id).each do |sub|
         #check if there exists scheduled escalation with same context_id &
         #external_id
-        unless ScheduledEscalation.where(subscription_id: sub.id).
+        if ScheduledEscalation.where(subscription_id: sub.id).
           where(external_reference_id: external_id).
           where(status: 'scheduled').exists?
+          escals_created = false
+        else
           duedate = DateTime.now + level.when.minutes
           if ScheduledEscalation.create(subscription_id: sub.id,
                                         duedate: duedate,
@@ -46,13 +49,13 @@ class EscalationsController < ApplicationController
       end
     end
 
-    if escal_count == 0
+    if escals_created
+      render :json => { :status => :ok,
+                        :message => "#{escal_count} escalations created." }
+    else
       render :json => { :status => :error,
                         :message => 'Escalations with same context_id and'\
                           ' external_reference_id are already scheduled.'}
-    else
-      render :json => { :status => :ok,
-                        :message => "#{escal_count} escalations created." }
     end
   end
 
