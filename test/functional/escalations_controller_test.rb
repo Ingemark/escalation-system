@@ -48,6 +48,15 @@ class EscalationsControllerTest < ActionController::TestCase
     assert_equal '3 escalations created.', body["message"]
   end
 
+  test 'create zero escalations created' do
+    params = {context_id: contexts(:no_subscriptions), external_reference_id: "1"}
+    post :create, params, @headers
+    body = JSON.parse(@response.body)
+
+    assert_equal 'ok', body["status"]
+    assert_equal '0 escalations created.', body["message"]
+  end
+
   test 'create escalations not created' do
     params = {context_id: contexts(:inge_mark).id, external_reference_id: "1"}
     post :create, params, @headers

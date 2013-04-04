@@ -28,7 +28,7 @@ class EscalationsController < ApplicationController
     end
 
     escal_count = 0
-    escals_created = true
+    escals_exist = false
     EscalationLevel.where(context_id: context_id).each do |level|
       Subscription.where(escalation_level_id: level.id).each do |sub|
         #check if there exists scheduled escalation with same context_id &
@@ -36,7 +36,7 @@ class EscalationsController < ApplicationController
         if ScheduledEscalation.where(subscription_id: sub.id).
           where(external_reference_id: external_id).
           where(status: 'scheduled').exists?
-          escals_created = false
+          escals_exist = true
         else
           duedate = DateTime.now + level.when.minutes
           if ScheduledEscalation.create(subscription_id: sub.id,
@@ -49,13 +49,13 @@ class EscalationsController < ApplicationController
       end
     end
 
-    if escals_created
-      render :json => { :status => :ok,
-                        :message => "#{escal_count} escalations created." }
-    else
+    if escals_exist
       render :json => { :status => :error,
                         :message => 'Escalations with same context_id and'\
                           ' external_reference_id are already scheduled.'}
+    else
+      render :json => { :status => :ok,
+                        :message => "#{escal_count} escalations created." }
     end
   end
 
@@ -92,24 +92,27 @@ class EscalationsController < ApplicationController
     end
     
     escal_count = 0
+    escals_canceled = false
     EscalationLevel.where(context_id: context_id).each do |level|
       Subscription.where(escalation_level_id: level.id).each do |sub|
-        ScheduledEscalation.where(external_reference_id: external_id).
-          where(status: 'scheduled').each do |escal|
-          escal_count += 1
-          escal.status = 'canceled'
-          escal.save
+        ScheduledEscalation.where(external_reference_id: external_id).each do |escal|
+          if escal.status == 'scheduled'
+            escal_count += 1
+            escal.status = 'canceled'
+            escal.save
+            escals_canceled = true
+          end
         end
       end
     end
 
-    if escal_count == 0
+    if escals_canceled
+      render :json => { :status => :ok,
+                        :message => "#{escal_count} escalations canceled." }
+    else
       render :json => { :status => :error,
                         :message => 'Escalations with same context_id and'\
                           ' external_reference_id are already canceled.'}
-    else
-      render :json => { :status => :ok,
-                        :message => "#{escal_count} escalations canceled." }
     end
   end
 end
