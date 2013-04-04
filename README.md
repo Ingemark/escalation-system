@@ -53,3 +53,12 @@ JSON response:
 ```JSON
 {"status": "OK", "message": "3 escalations canceled."}
 ```
+
+###Testing API with curl
+```
+curl -H "Accept: application/json" \
+     -H "Content-type: application/json" \
+     -d '{"external_reference_id":"123", "context_id":1, "auth_token":"fs2t3ybDu1h2PzCWy4p"}' \
+     -X DELETE \
+     localhost:3000/escalations
+```
