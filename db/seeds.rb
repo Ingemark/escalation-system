@@ -24,8 +24,20 @@
   mail = DeliveryService.create(name: 'mail')
   phone = DeliveryService.create(name: 'phone')
 
-  DeliveryServiceProperty.create(key: 'smtp',
-                                 value: 'smtp.t-com.hr',
+  DeliveryServiceProperty.create(key: 'address',
+                                 value: 'mailtrap.io',
+                                 delivery_service_id: mail.id)
+  DeliveryServiceProperty.create(key: 'user_name',
+                                 value: 'user_name',
+                                 delivery_service_id: mail.id)
+  DeliveryServiceProperty.create(key: 'password',
+                                 value: 'password',
+                                 delivery_service_id: mail.id)
+  DeliveryServiceProperty.create(key: 'port',
+                                 value: '2525',
+                                 delivery_service_id: mail.id)
+  DeliveryServiceProperty.create(key: 'authentication',
+                                 value: 'plain',
                                  delivery_service_id: mail.id)
 
   viktor_mail = DeliveryAddress.create(name: 'viktor mail',

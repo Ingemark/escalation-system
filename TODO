@@ -1,13 +1,11 @@
+token
+rake
+templates
+mailer test
+
 sign_in redirect
 rm devise layouts
 nested forms not working
 
 unit tests
-route tests
 integration tests
-
-root page?
-
-token
-rake
-template
