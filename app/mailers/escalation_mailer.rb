@@ -1,9 +1,11 @@
 class EscalationMailer < ActionMailer::Base
   default from: "escalation.system@inge-mark.hr"
 
-  def escalate
+  def escalate(escalation)
     init_smtp
-    mail to: 'hrvoje.kopinc@gmail.com', subject: "Proba"
+    @escalation = escalation
+
+    mail to: escalation.subscription.delivery_address.address, subject: "Proba"
   end
 
   private
