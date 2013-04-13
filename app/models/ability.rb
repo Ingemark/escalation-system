@@ -8,7 +8,7 @@ class Ability
         can :dashboard
         can :manage, :all
 
-        cannot [:update, :create], ScheduledEscalation
+        cannot [:create], ScheduledEscalation
       end
     end
   end
