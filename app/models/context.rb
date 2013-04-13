@@ -6,4 +6,5 @@ class Context < ActiveRecord::Base
   validates :name, uniqueness: true
 
   has_many :escalation_levels, dependent: :destroy
+  has_many :templates, dependent: :destroy
 end

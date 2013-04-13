@@ -1,7 +1,7 @@
 token
-rake
-templates
+template test
 mailer test
+rails_admin: template content size, move config to models
 
 sign_in redirect
 rm devise layouts

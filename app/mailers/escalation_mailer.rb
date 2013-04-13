@@ -4,8 +4,17 @@ class EscalationMailer < ActionMailer::Base
   def escalate(escalation)
     init_smtp
     @escalation = escalation
+    context = escalation.subscription.escalation_level.context
+    mail_service = DeliveryService.find_by_name('mail')
+    subject = Template.find_by_context_id_and_delivery_service_id_and_field(
+      context.id, mail_service.id, 'subject').content
+    body = Template.find_by_context_id_and_delivery_service_id_and_field(
+      context.id, mail_service.id, 'body').content
 
-    mail to: escalation.subscription.delivery_address.address, subject: "Proba"
+    mail to: escalation.subscription.delivery_address.address, subject:
+      subject do |format|
+      format.text  { render :inline => body }
+    end
   end
 
   private

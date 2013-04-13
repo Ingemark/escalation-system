@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  context_id: 1
+  delivery_service_id: 1
+  field: MyString
+  content: MyString
+
+two:
+  context_id: 1
+  delivery_service_id: 1
+  field: MyString
+  content: MyString

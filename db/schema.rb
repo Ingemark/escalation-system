@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401134244) do
+ActiveRecord::Schema.define(:version => 20130413170008) do
 
   create_table "consumers", :force => true do |t|
     t.string   "name"
@@ -111,6 +111,15 @@ ActiveRecord::Schema.define(:version => 20130401134244) do
 
   add_index "subscriptions", ["delivery_address_id"], :name => "index_subscriptions_on_delivery_address_id"
   add_index "subscriptions", ["escalation_level_id"], :name => "index_subscriptions_on_escalation_level_id"
+
+  create_table "templates", :force => true do |t|
+    t.integer  "context_id"
+    t.integer  "delivery_service_id"
+    t.string   "field"
+    t.text     "content"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

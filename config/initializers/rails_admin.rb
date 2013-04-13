@@ -76,6 +76,10 @@ RailsAdmin.config do |config|
     navigation_label 'Context'
   end 
 
+  config.model 'Template' do
+    navigation_label 'Context'
+  end 
+
   config.model 'Subscription' do
     navigation_label 'Escalation'
   end 
