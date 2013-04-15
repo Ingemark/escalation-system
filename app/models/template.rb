@@ -9,5 +9,9 @@ class Template < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Context'
+
+    configure :content do
+      html_attributes rows: 20, cols: 80
+    end
   end
 end
