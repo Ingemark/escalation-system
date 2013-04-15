@@ -2,6 +2,7 @@ token
 template test
 mailer test
 rails_admin: template content size, move config to models
+update .ewb file
 
 sign_in redirect
 rm devise layouts
