@@ -5,4 +5,8 @@ class Consumer < ActiveRecord::Base
   validates :name, uniqueness: true
 
   has_many :delivery_addresses, dependent: :destroy
+
+  rails_admin do
+    navigation_label 'Delivery'
+  end
 end

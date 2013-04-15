@@ -7,4 +7,8 @@ class DeliveryService < ActiveRecord::Base
   has_many :delivery_service_properties, dependent: :destroy
   has_many :delivery_addresses, dependent: :destroy
   has_many :templates, dependent: :destroy
+
+  rails_admin do
+    navigation_label 'Delivery'
+  end
 end

@@ -9,4 +9,7 @@ class DeliveryAddress < ActiveRecord::Base
 
   has_many :subscriptions
 
+  rails_admin do
+    navigation_label 'Delivery'
+  end
 end

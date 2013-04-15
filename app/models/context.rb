@@ -7,4 +7,8 @@ class Context < ActiveRecord::Base
 
   has_many :escalation_levels, dependent: :destroy
   has_many :templates, dependent: :destroy
+ 
+  rails_admin do
+    navigation_label 'Context'
+  end
 end

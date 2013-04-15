@@ -6,4 +6,8 @@ class Template < ActiveRecord::Base
 
   belongs_to :context
   belongs_to :delivery_service
+
+  rails_admin do
+    navigation_label 'Context'
+  end
 end

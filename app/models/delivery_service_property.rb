@@ -5,4 +5,8 @@ class DeliveryServiceProperty < ActiveRecord::Base
   validates :key, uniqueness: { :scope => :delivery_service_id }
 
   belongs_to :delivery_service
+
+  rails_admin do
+    navigation_label 'Delivery'
+  end
 end

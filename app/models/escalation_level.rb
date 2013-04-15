@@ -7,4 +7,8 @@ class EscalationLevel < ActiveRecord::Base
 
   belongs_to :context
   has_many :subscriptions
+
+  rails_admin do
+    navigation_label 'Context'
+  end
 end

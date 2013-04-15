@@ -5,4 +5,8 @@ class ScheduledEscalation < ActiveRecord::Base
     presence: true
 
   belongs_to :subscription
+
+  rails_admin do
+    navigation_label 'Escalation'
+  end
 end
