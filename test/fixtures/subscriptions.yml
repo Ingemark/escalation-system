@@ -1,18 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-viktor:
+viktor_inge_mark:
   name: viktor
   escalation_level: drugi
   delivery_address: viktor_mail
   consumer_sequence: 2
 
-josip:
+josip_inge_mark:
   name: josip
   escalation_level: drugi
   delivery_address: josip_mail
   consumer_sequence: 1
 
-alen:
+alen_inge_mark:
   name: alen
   escalation_level: prvi
   delivery_address: alen_mail

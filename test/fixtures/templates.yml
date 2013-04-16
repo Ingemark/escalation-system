@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  context_id: 1
-  delivery_service_id: 1
-  field: MyString
-  content: MyString
+inge_mark_mail_subject:
+  context: inge_mark
+  delivery_service: mail
+  field: 'subject'
+  content: 'Eskalator'
 
-two:
-  context_id: 1
-  delivery_service_id: 1
-  field: MyString
-  content: MyString
+inge_mark_mail_body:
+  context: inge_mark
+  delivery_service: mail
+  field: 'body'
+  content: 'Ovo je eskalacija'

@@ -1,5 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one: {}
-
-two: {}
+one:
+  subscription: alen_inge_mark
+  duedate: <%= Time.now - 1.hour %>
+  external_reference_id: "123"
+  status: 'scheduled'
