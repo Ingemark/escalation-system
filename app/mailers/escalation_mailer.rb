@@ -8,9 +8,9 @@ class EscalationMailer < ActionMailer::Base
     mail_service = DeliveryService.find_by_name('mail')
 
     subject = Template.find_by_context_id_and_delivery_service_id_and_field(
-      context.id, mail_service.id, 'subject').try(:content) || ''
+      context.id, mail_service.id, 'subject').try(:content) || 'Subject'
     body = Template.find_by_context_id_and_delivery_service_id_and_field(
-      context.id, mail_service.id, 'body').try(:content) || ''
+      context.id, mail_service.id, 'body').try(:content) || 'body'
 
     mail to: escalation.subscription.delivery_address.address, subject:
       subject do |format|

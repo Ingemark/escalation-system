@@ -39,6 +39,18 @@
   DeliveryServiceProperty.create(key: 'authentication',
                                  value: 'plain',
                                  delivery_service_id: mail.id)
+  
+  Template.create(context_id: inge_mark.id,
+                 delivery_service_id: mail.id,
+                 field: 'subject',
+                 content: 'Eskalator')
+
+  Template.create(context_id: inge_mark.id,
+                 delivery_service_id: mail.id,
+                 field: 'body',
+                 content: "Ovo je eskalacija.
+      External reference: <%= @escalation.external_reference_id %>
+      Context: <%= @escalation.subscription.escalation_level.context.name %>")
 
   viktor_mail = DeliveryAddress.create(name: 'viktor mail',
                                        address: 'viktor@inge-mark.hr',
