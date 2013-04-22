@@ -1,6 +1,6 @@
 token
-update .ewb file
 integration tests
+update README
 
 sign_in redirect
 rm devise layouts
