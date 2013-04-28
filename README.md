@@ -1,4 +1,76 @@
 #Escalation system
+Escalation system is Ruby on Rails application implementing escalation process
+and notification delivery via phone and mail. External system (e.g. issue
+tracker) creates an escalation and system then delivers notifications to
+subscribed users by levels. When the issue is solved user marks it as such in
+external system which then has to cancel the escalation.
+
+##Features
+* Simultaneous escalation processes
+* Multiple escalation configurations
+* Escalation creation and canceling via web API
+* Administration interface (via [Rails Admin] (https://github.com/sferik/rails_admin))
+* Authentication (via [Devise] (https://github.com/plataformatec/devise))
+* Authorization (via [CanCan] (https://github.com/ryanb/cancan) and [Rolify]
+    (https://github.com/EppO/rolify))
+* Mail notifications (you need SMTP server)
+* Phone notifications (via [Asterisk] (http://www.asterisk.org/) and [Adhearsion] 
+    (https://github.com/adhearsion/adhearsion))
+
+##Data model
+![model](https://raw.github.com/Inge-mark/escalation-system/master/public/es.png)
+
+###Consumers
+Persons or systems that are notified about new escalations
+
+###Delivery services
+Implemented notification methods
+
+###Delivery service properties
+Configurations (key-value pairs) for notification methods
+
+###Delivery addresses
+Consumer addresses for notification delivery
+
+###Contexts
+Groups of escalation levels
+
+###Escalation levels
+Every context can contain multiple escalation levels. Consumers in higher levels
+are notified after defined time only if lower levels couldn't solve the issue.
+
+###Templates
+Notification template for specific context and delivery service. E.g. subject and
+body for email delivery.
+
+###User
+User that can log in to administration interface or create new escalations.
+
+###Roles
+Users with role 'admin' can log in administration interface. Users with role 'user'
+and specific context can create escalations for that context.
+
+###User roles
+User-role join table
+
+###Scheduled escalations
+New escalations with due time and status ('scheduled', 'canceled' or 'delivered')
+
+###Subscriptions
+User subscription for escalation level via delivery address.
+
+
+##Instalation and configuration
+
+###Requirements
+
+###Database
+
+###SMTP
+
+###Asterisk
+
+###Roles
 
 ##API
 
