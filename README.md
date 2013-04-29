@@ -53,8 +53,7 @@ User subscription for escalation level via delivery address.
 User that can log in to administration interface or create new escalations.
 
 ###Roles
-Users with role 'admin' can log in administration interface. Users with role 'user'
-and specific context can create escalations for that context.
+Roles can be global, specific to model or instance of a model
 
 ###User roles
 User-role join table.
@@ -62,18 +61,55 @@ User-role join table.
 ##Instalation and configuration
 
 ###Requirements
+* PostgreSQL database
+* [rvm] (https://github.com/wayneeseguin/rvm)
+* [Rails Admin] (https://github.com/sferik/rails_admin)
+* [Devise] (https://github.com/plataformatec/devise)
+* [CanCan] (https://github.com/ryanb/cancan)
+* [Rolify] (https://github.com/EppO/rolify)
+* [Asterisk] (http://www.asterisk.org/)
+* [Adhearsion] (https://github.com/adhearsion/adhearsion)
 
 ###Database
+Database settings should be set in *config/database.yml*.
+```
+development:
+    adapter: postgresql
+    encoding: unicode
+    database: escal_development
+    pool: 5
+    host: localhost
+    port: 5432
+    username: <username>
+    password: <username>
+```
+TODO seed
 
 ###SMTP
+Set delivery service properties for *mail* in administration interface.
+* address - SMTP server address
+* user_name
+* password
+* port
+* authentication
 
 ###Asterisk
+Set delivery service properties for *phone* in administration interface.
+TODO
+
+###Templates
+Set *subject* and *body* values for *mail* delivery service. You have access to *escalation* instance variable.
+TODO Asterisk
 
 ###Roles
+Users with role 'admin' can log in administration interface. 
+Users with role 'user' for model *Context* can create and cancel escalations for all contexts.
+User with role 'user' for specific *Context* can only create and cancel escalations for that context.
 
 ##API
 
 ###Tokens
+For creating and canceling escalations you need a security token.
 
 ####Creating a token
 ```
@@ -133,3 +169,24 @@ curl -H "Accept: application/json" \
      -X DELETE \
      localhost:3000/escalations
 ```
+
+##Notification delivery
+
+To manually check for scheduled mail escalations and deliver them run rake task:
+```
+rake escalate:mail
+```
+
+To manually check for scheduled phone escalations and deliver them run rake task:
+```
+rake escalate:phone
+```
+
+To manually check for all scheduled  escalations and deliver them run rake task:
+```
+rake escalate:all
+```
+
+###Cron job
+TODO
+
