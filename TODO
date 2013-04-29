@@ -1,6 +1,7 @@
 token
 integration tests
 update README
+more verbose rake tasks
 
 sign_in redirect
 rm devise layouts
