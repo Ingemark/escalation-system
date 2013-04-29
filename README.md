@@ -21,19 +21,19 @@ external system which then has to cancel the escalation.
 ![model](https://raw.github.com/Inge-mark/escalation-system/master/public/es.png)
 
 ###Consumers
-Persons or systems that are notified about new escalations
+Persons or systems that are notified about new escalations.
 
 ###Delivery services
-Implemented notification methods
+Implemented notification methods.
 
 ###Delivery service properties
-Configurations (key-value pairs) for notification methods
+Configurations (key-value pairs) for notification methods.
 
 ###Delivery addresses
-Consumer addresses for notification delivery
+Consumer addresses for notification delivery.
 
 ###Contexts
-Groups of escalation levels
+Groups of escalation levels.
 
 ###Escalation levels
 Every context can contain multiple escalation levels. Consumers in higher levels
@@ -43,6 +43,12 @@ are notified after defined time only if lower levels couldn't solve the issue.
 Notification template for specific context and delivery service. E.g. subject and
 body for email delivery.
 
+###Scheduled escalations
+New escalations with due time and status ('scheduled', 'canceled' or 'delivered').
+
+###Subscriptions
+User subscription for escalation level via delivery address.
+
 ###User
 User that can log in to administration interface or create new escalations.
 
@@ -51,14 +57,7 @@ Users with role 'admin' can log in administration interface. Users with role 'us
 and specific context can create escalations for that context.
 
 ###User roles
-User-role join table
-
-###Scheduled escalations
-New escalations with due time and status ('scheduled', 'canceled' or 'delivered')
-
-###Subscriptions
-User subscription for escalation level via delivery address.
-
+User-role join table.
 
 ##Instalation and configuration
 
