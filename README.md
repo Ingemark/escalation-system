@@ -3,7 +3,7 @@ Escalation system is Ruby on Rails application implementing escalation process
 and notification delivery via phone and mail. External system (e.g. issue
 tracker) creates an escalation and system then delivers notifications to
 subscribed users by levels. When the issue is solved user marks it as such in
-external system which then has to cancel the escalation.
+external system which then cancels the escalation.
 
 ##Features
 * Simultaneous escalation processes
@@ -87,7 +87,7 @@ TODO seed
 
 ###SMTP
 Set delivery service properties for *mail* in administration interface.
-* address - SMTP server address
+* address
 * user_name
 * password
 * port
@@ -98,18 +98,27 @@ Set delivery service properties for *phone* in administration interface.
 TODO
 
 ###Templates
-Set *subject* and *body* values for *mail* delivery service. You have access to *escalation* instance variable.
+Templates are written in ERB; you have access to *escalation* instance variable.
+Set *subject* and *body* templates for *mail* delivery service.
 TODO Asterisk
 
+Template example for email body.
+```ERB
+This as an escalation.
+External reference: <%= @escalation.external_reference_id %>
+Context: <%= @escalation.subscription.escalation_level.context.name %>
+```
+
 ###Roles
-Users with role 'admin' can log in administration interface. 
+Users with role 'admin' can log in to administration interface. 
 Users with role 'user' for model *Context* can create and cancel escalations for all contexts.
 User with role 'user' for specific *Context* can only create and cancel escalations for that context.
 
 ##API
 
 ###Tokens
-For creating and canceling escalations you need a security token.
+For creating and canceling escalations you need a security token. 
+To create a token you need to log in with your username and password
 
 ####Creating a token
 ```
